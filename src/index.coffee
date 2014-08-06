@@ -8,6 +8,9 @@ module.exports = class DoccoRunner
   files: []
 
   constructor: (@config) ->
+    extras = @config.plugins?.docco?.extras || []
+    for file in extras
+      @files.push file
 
   compile: (params, callback) ->
     @files.push(params.path) unless params.path in @files
