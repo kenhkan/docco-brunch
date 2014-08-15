@@ -10,7 +10,7 @@ module.exports = class DoccoRunner
 
   compile: (params, callback) ->
     execPath = 'node_modules/docco-brunch/node_modules/docco/bin/docco'
-    command = "#{execPath} #{params.path}"
+    command = "#{execPath} --output #{@config.paths.public}/docs #{params.path}"
 
     child_process.exec command, (error, stdout, stderr) ->
       console.log "exec error: #{error}" if error?
